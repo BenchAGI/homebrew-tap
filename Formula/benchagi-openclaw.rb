@@ -17,12 +17,10 @@
 class BenchagiOpenclaw < Formula
   desc "BenchAGI-flavored OpenClaw agent harness (Slack + CLI + cloud-brain bridge)"
   homepage "https://github.com/BenchAGI/openclaw"
-  license "Apache-2.0"
-
   # Released 2026-05-29: gh release v2026.5.28 on BenchAGI/openclaw (commit 117c73b4, main tip).
   url "https://github.com/BenchAGI/openclaw/archive/refs/tags/v2026.5.28.tar.gz"
   sha256 "bd66a757e1de9f452e958fee1a29b82254a120bda5106d9c66103df5673c180d"
-  version "2026.5.28"
+  license "Apache-2.0"
 
   depends_on "node@24" # OpenClaw is a Node CLI; matches the version Cory's MBP runs
   depends_on "pnpm"
