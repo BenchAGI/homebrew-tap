@@ -9,16 +9,16 @@
 # short name, so bare `brew install openclaw` resolves to the cask. Always
 # use the fully qualified name to disambiguate.
 #
-# Source: BenchAGI/openclaw at the cloud-brain CLI executor fix. We build
-# from source here so customer installs pick up the gateway `/v1/llm_turn`
-# executor before the next public npm tarball is published.
+# Source: BenchAGI/openclaw customer harness refresh. We build from source here
+# so customer installs pick up upstream OpenClaw v2026.6.1 plus the BenchAGI
+# cloud-brain bridge.
 class Openclaw < Formula
   desc "Multi-channel AI gateway with extensible messaging integrations"
   homepage "https://github.com/BenchAGI/openclaw"
-  url "https://github.com/BenchAGI/openclaw/archive/012e846071a2da38fd7200ae541118644cbf859e.tar.gz"
-  sha256 "3b4ab44cab52ae0a06663a3cda4e02356175ed09e88f3886430868931e3cb72b"
+  url "https://github.com/BenchAGI/openclaw/archive/refs/tags/v2026.6.1-1.tar.gz"
+  sha256 "9be8889897c1111dd596eb3a26a6d12e863a9b7578e3cddd3ad7d8b88a60167d"
   license "MIT"
-  version "2026.5.7"
+  version "2026.6.1-1"
 
   depends_on "node"
   depends_on "pnpm" => :build
