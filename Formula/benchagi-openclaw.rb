@@ -3,8 +3,9 @@
 
 # Homebrew formula sketch for the BenchAGI-flavored OpenClaw harness.
 #
-# Status: PUBLISHED 2026-06-04. Release v2026.6.1-1 cut on BenchAGI/openclaw;
-# this formula pushed to BenchAGI/homebrew-tap as benchagi-openclaw.rb.
+# Status: PUBLISHED 2026-06-04. Release v2026.6.1-2 cut on BenchAGI/openclaw
+# (bench-sync B1-B4 customer harness); this formula pushed to
+# BenchAGI/homebrew-tap as benchagi-openclaw.rb.
 #   Customer install: `brew install benchagi/tap/benchagi-openclaw`
 # This copy in kestrel-aurelius/customer-rollout/ is the source of truth; the tap
 # copy is generated from it. Re-publish: cut a new release tag, recompute sha256,
@@ -17,11 +18,12 @@
 class BenchagiOpenclaw < Formula
   desc "BenchAGI-flavored OpenClaw agent harness (Slack + CLI + cloud-brain bridge)"
   homepage "https://github.com/BenchAGI/openclaw"
-  # Released 2026-06-04: upstream OpenClaw v2026.6.1 plus BenchAGI bridge (commit 4902af0).
-  url "https://github.com/BenchAGI/openclaw/archive/refs/tags/v2026.6.1-1.tar.gz"
-  sha256 "9be8889897c1111dd596eb3a26a6d12e863a9b7578e3cddd3ad7d8b88a60167d"
+  # Released 2026-06-04: upstream OpenClaw v2026.6.1 plus BenchAGI bridge and
+  # bench-sync extension B1-B4 (commit 4c68d9b).
+  url "https://github.com/BenchAGI/openclaw/archive/refs/tags/v2026.6.1-2.tar.gz"
+  sha256 "760febe0a71f7bdfc2aca2e2e2c5437018a3a4da92e92b673576c160ca23beee"
   license "MIT"
-  version "2026.6.1-1"
+  version "2026.6.1-2"
 
   depends_on "node@24" # OpenClaw is a Node CLI; matches the version Cory's MBP runs
   depends_on "pnpm"
