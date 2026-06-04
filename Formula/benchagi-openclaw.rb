@@ -3,7 +3,7 @@
 
 # Homebrew formula sketch for the BenchAGI-flavored OpenClaw harness.
 #
-# Status: PUBLISHED 2026-05-29. Release v2026.5.28 cut on BenchAGI/openclaw;
+# Status: PUBLISHED 2026-06-04. Release v2026.6.1-1 cut on BenchAGI/openclaw;
 # this formula pushed to BenchAGI/homebrew-tap as benchagi-openclaw.rb.
 #   Customer install: `brew install benchagi/tap/benchagi-openclaw`
 # This copy in kestrel-aurelius/customer-rollout/ is the source of truth; the tap
@@ -17,10 +17,11 @@
 class BenchagiOpenclaw < Formula
   desc "BenchAGI-flavored OpenClaw agent harness (Slack + CLI + cloud-brain bridge)"
   homepage "https://github.com/BenchAGI/openclaw"
-  # Released 2026-05-29: gh release v2026.5.28 on BenchAGI/openclaw (commit 117c73b4, main tip).
-  url "https://github.com/BenchAGI/openclaw/archive/refs/tags/v2026.5.28.tar.gz"
-  sha256 "bd66a757e1de9f452e958fee1a29b82254a120bda5106d9c66103df5673c180d"
-  license "Apache-2.0"
+  # Released 2026-06-04: upstream OpenClaw v2026.6.1 plus BenchAGI bridge (commit 4902af0).
+  url "https://github.com/BenchAGI/openclaw/archive/refs/tags/v2026.6.1-1.tar.gz"
+  sha256 "9be8889897c1111dd596eb3a26a6d12e863a9b7578e3cddd3ad7d8b88a60167d"
+  license "MIT"
+  version "2026.6.1-1"
 
   depends_on "node@24" # OpenClaw is a Node CLI; matches the version Cory's MBP runs
   depends_on "pnpm"
