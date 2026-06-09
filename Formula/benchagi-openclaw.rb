@@ -20,9 +20,9 @@ class BenchagiOpenclaw < Formula
   homepage "https://github.com/BenchAGI/openclaw"
   # Released 2026-06-04: upstream OpenClaw v2026.6.1 plus BenchAGI bridge and
   # bench-sync extension B1-B4 (commit 4c68d9b).
-  url "https://github.com/BenchAGI/openclaw/archive/refs/tags/v2026.6.1-2.tar.gz"
-  version "2026.6.1-2"
-  sha256 "760febe0a71f7bdfc2aca2e2e2c5437018a3a4da92e92b673576c160ca23beee"
+  url "https://github.com/BenchAGI/openclaw/archive/refs/tags/v2026.6.1-3.tar.gz"
+  version "2026.6.1-3"
+  sha256 "7dfbb40e73739b88c38b37f40cebe62264f3d04c4d6da6e0824a4a44cf4b523a"
   license "MIT"
 
   depends_on "node@24" # OpenClaw is a Node CLI; matches the version Cory's MBP runs
