@@ -9,19 +9,20 @@ cask "benchagi" do
   sha256 :no_check
 
   url "https://github.com/BenchAGI/bench-cli/archive/refs/tags/v#{version}.tar.gz",
-      verified: "github.com/BenchAGI/bench-cli"
+      verified: "github.com/BenchAGI/bench-cli/"
   name "BenchAGI"
   desc "Clickable BenchAGI launcher — boot + agent selector (harness, Claude, or Codex)"
-  homepage "https://benchagi.com"
+  homepage "https://benchagi.com/"
 
   depends_on formula: "BenchAGI/tap/benchagi"
 
   # Build the self-contained BenchAGI.app locally (no Gatekeeper download prompt).
   installer script: {
-    executable: "#{HOMEBREW_PREFIX}/bin/benchagi-make-dock-app",
+    executable:   "#{HOMEBREW_PREFIX}/bin/benchagi-make-dock-app",
     must_succeed: false,
   }
 
   uninstall delete: "#{Dir.home}/Applications/BenchAGI.app"
+
   zap trash: "#{Dir.home}/Applications/BenchAGI.app"
 end
