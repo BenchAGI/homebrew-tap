@@ -18,12 +18,11 @@
 class BenchagiOpenclaw < Formula
   desc "BenchAGI-flavored OpenClaw agent harness (Slack + CLI + cloud-brain bridge)"
   homepage "https://github.com/BenchAGI/openclaw"
-  # Released 2026-06-04: upstream OpenClaw v2026.6.1 plus BenchAGI bridge and
-  # bench-sync extension B1-B4 (commit 4c68d9b).
-  url "https://github.com/BenchAGI/openclaw/archive/refs/tags/v2026.6.1-5.tar.gz"
-  sha256 "d3eee119489390261d4b8882cfd4719ef179d9341f9dec1e9f9f47732c48b08f"
+  # Released 2026-06-11: BenchAGI OpenClaw with local-seat capture and the
+  # customer bridge.
+  url "https://github.com/BenchAGI/openclaw/archive/refs/tags/v2026.6.1-6.tar.gz"
+  sha256 "db3af720bb003fc37f780d91846c59c0e34cd6b91665f27055cb97f7df9c83fe"
   license "MIT"
-  version "2026.6.1-5"
 
   depends_on "node@24" # OpenClaw is a Node CLI; matches the version Cory's MBP runs
   depends_on "pnpm"

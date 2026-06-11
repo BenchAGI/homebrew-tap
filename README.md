@@ -64,8 +64,9 @@ is considered complete.
 
 For local Codex CLI seats, first launch may ask you to review hooks. Run
 `/hooks` in Codex and trust the BenchAGI seat bridge hook; until that hook is
-trusted, local prompt captures are skipped. Keep this tap pinned to beta.9 until
-BenchAGI CLI beta.10 is tagged and its tarball SHA is published.
+trusted, local prompt captures are skipped. This release requires
+`benchagi/tap/openclaw` 2026.6.1-6 or newer and BenchAGI CLI 1.0.0-beta.10 or
+newer.
 
 ## Name collision note
 

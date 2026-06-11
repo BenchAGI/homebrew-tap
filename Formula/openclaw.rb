@@ -10,14 +10,13 @@
 # use the fully qualified name to disambiguate.
 #
 # Source: BenchAGI/openclaw customer harness refresh. We build from source here
-# so customer installs pick up upstream OpenClaw v2026.6.1 plus the BenchAGI
-# cloud-brain bridge.
+# so customer installs pick up the BenchAGI cloud-brain bridge and local-seat
+# capture gateway.
 class Openclaw < Formula
   desc "Multi-channel AI gateway with extensible messaging integrations"
   homepage "https://github.com/BenchAGI/openclaw"
-  url "https://github.com/BenchAGI/openclaw/archive/refs/tags/v2026.6.1-4.tar.gz"
-  version "2026.6.1-4"
-  sha256 "30744a3532c33eb63b1521354028f5dd933574c9788234c957548b0f531b234e"
+  url "https://github.com/BenchAGI/openclaw/archive/refs/tags/v2026.6.1-6.tar.gz"
+  sha256 "db3af720bb003fc37f780d91846c59c0e34cd6b91665f27055cb97f7df9c83fe"
   license "MIT"
 
   depends_on "pnpm" => :build
