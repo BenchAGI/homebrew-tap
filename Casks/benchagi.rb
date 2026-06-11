@@ -1,16 +1,17 @@
 # frozen_string_literal: true
 
 # The clickable BenchAGI Dock app (the "glyph"): boot cinematic -> agent selector
-# -> cloud seat (Enter) or local Claude Code seat (l). Built locally from the CLI
-# (the formula) so it opens cleanly without notarization. Requires the CLI, which
-# this cask installs as a dependency.
+# -> tunnel/direct harness, local Claude Code (l), or local Codex CLI (x). Built
+# locally from the CLI (the formula) so it opens cleanly without notarization.
+# Requires the CLI, which this cask installs as a dependency.
 cask "benchagi" do
-  version "1.0.0-beta.6"
+  version "1.0.0-beta.9"
   sha256 :no_check
 
-  url "https://github.com/BenchAGI/bench-cli/archive/refs/tags/v#{version}.tar.gz"
+  url "https://github.com/BenchAGI/bench-cli/archive/refs/tags/v#{version}.tar.gz",
+      verified: "github.com/BenchAGI/bench-cli"
   name "BenchAGI"
-  desc "Clickable BenchAGI launcher — boot + agent selector (cloud or local seat)"
+  desc "Clickable BenchAGI launcher — boot + agent selector (harness, Claude, or Codex)"
   homepage "https://benchagi.com"
 
   depends_on formula: "BenchAGI/tap/benchagi"

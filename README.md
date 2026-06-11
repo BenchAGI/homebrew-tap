@@ -4,6 +4,22 @@ Canonical Homebrew tap for BenchAGI tools.
 
 ## Install
 
+BenchAGI CLI and clickable Dock launcher:
+
+```bash
+brew tap benchagi/tap
+brew install benchagi/tap/benchagi
+benchagi-make-dock-app
+```
+
+The cask runs the same Dock-app builder after installing the formula:
+
+```bash
+brew install --cask benchagi/tap/benchagi
+```
+
+OpenClaw gateway:
+
 ```bash
 brew tap benchagi/tap
 brew install benchagi/tap/openclaw
@@ -21,16 +37,30 @@ curl http://localhost:18789/health # verify
 
 | Formula | Command | Description |
 |---------|---------|-------------|
+| `benchagi` | `brew install benchagi/tap/benchagi` | BenchAGI CLI, premium TUI, agent picker, local Claude/Codex seats, and local Dock-app helper |
+| `benchagi` cask | `brew install --cask benchagi/tap/benchagi` | Builds `~/Applications/BenchAGI.app` from the installed CLI helper |
 | `openclaw` | `brew install benchagi/tap/openclaw` | Multi-channel AI gateway with extensible messaging integrations |
-
-Future BenchAGI formulae will ship from this same tap — no new tap repo per tool.
 
 ## Upgrading
 
 ```bash
 brew update
+brew upgrade benchagi/tap/benchagi
+benchagi-make-dock-app
 brew upgrade benchagi/tap/openclaw
 ```
+
+After upgrading both packages, verify the local-seat memory bridge:
+
+```bash
+benchagi doctor
+benchagi version
+```
+
+`benchagi doctor` must find OpenClaw gateway method `local-seat.capture`.
+The launcher picker must expose Enter = tunnel, `d` = direct gateway, `l` =
+local Claude Code, and `x` = local Codex CLI before a customer desktop release
+is considered complete.
 
 ## Name collision note
 
