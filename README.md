@@ -45,9 +45,9 @@ curl http://localhost:18789/health # verify
 
 ```bash
 brew update
+brew upgrade benchagi/tap/openclaw
 brew upgrade benchagi/tap/benchagi
 benchagi-make-dock-app
-brew upgrade benchagi/tap/openclaw
 ```
 
 After upgrading both packages, verify the local-seat memory bridge:
@@ -61,6 +61,11 @@ benchagi version
 The launcher picker must expose Enter = tunnel, `d` = direct gateway, `l` =
 local Claude Code, and `x` = local Codex CLI before a customer desktop release
 is considered complete.
+
+For local Codex CLI seats, first launch may ask you to review hooks. Run
+`/hooks` in Codex and trust the BenchAGI seat bridge hook; until that hook is
+trusted, local prompt captures are skipped. Keep this tap pinned to beta.9 until
+BenchAGI CLI beta.10 is tagged and its tarball SHA is published.
 
 ## Name collision note
 
