@@ -6,7 +6,8 @@
 # Requires the CLI, which this cask installs as a dependency.
 cask "benchagi" do
   version "1.0.0-beta.10"
-  sha256 :no_check
+  # Same artifact the `benchagi` formula installs — pin the same checksum.
+  sha256 "5fdd52ff70a532017133489994636a9c9fefade7558213f230a587292845ac28"
 
   url "https://github.com/BenchAGI/bench-cli/archive/refs/tags/v#{version}.tar.gz",
       verified: "github.com/BenchAGI/bench-cli/"
@@ -17,9 +18,12 @@ cask "benchagi" do
   depends_on formula: "BenchAGI/tap/benchagi"
 
   # Build the self-contained BenchAGI.app locally (no Gatekeeper download prompt).
+  # make-dock-app.sh is idempotent (rm -rf + rebuild) and headless-safe (no
+  # prompts/stdin at install time; icon/codesign steps are best-effort), so a
+  # failure here is a real build failure and should fail the cask.
   installer script: {
     executable:   "#{HOMEBREW_PREFIX}/bin/benchagi-make-dock-app",
-    must_succeed: false,
+    must_succeed: true,
   }
 
   uninstall delete: "#{Dir.home}/Applications/BenchAGI.app"

@@ -8,11 +8,11 @@
 #
 # Customers install via: brew install BenchAGI/tap/benchagi
 #
-# This is the canonical formula. `Formula/bench.rb` is kept as a back-compat
-# alias that installs the identical artifact (same url/sha256/version).
-# NOTE: both formulae link the same two binaries (`bench` + `benchagi`), so do
-# not install both at once — they collide on `bin/bench` and `bin/benchagi`.
-# Nobody needs both; pick `benchagi` (canonical).
+# This is the canonical formula. The old `Formula/bench.rb` alias has been
+# renamed to this formula via formula_renames.json, so existing `bench`
+# installs migrate here on `brew upgrade`. `conflicts_with "bench"` guards
+# the remaining collision window (both packages link `bin/bench` and
+# `bin/benchagi`).
 #
 # Alternative install paths:
 #   curl -fsSL https://raw.githubusercontent.com/BenchAGI/bench-cli/main/scripts/install.sh | sh
@@ -25,6 +25,8 @@ class Benchagi < Formula
   license "MIT"
 
   depends_on "node"
+
+  conflicts_with "bench", because: "both install bin/bench and bin/benchagi"
 
   def install
     system "#{Formula["node"].opt_bin}/npm", "install", "--no-save"

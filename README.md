@@ -68,6 +68,23 @@ trusted, local prompt captures are skipped. This release requires
 `benchagi/tap/openclaw` 2026.6.1-6 or newer and BenchAGI CLI 1.0.0-beta.10 or
 newer.
 
+## Which OpenClaw formula?
+
+This tap (`benchagi/tap`) is the **canonical** home for all BenchAGI formulae. It ships two
+OpenClaw builds that both install a `bin/openclaw` executable, so they are marked
+`conflicts_with` each other — install exactly one:
+
+| Formula | What it is |
+|---------|------------|
+| `openclaw` | Plain OpenClaw gateway — the multi-channel AI gateway, nothing else |
+| `benchagi-openclaw` | Customer harness build — gateway plus the BenchAGI Slack/CLI/cloud-brain bridge and the `aurelius` seat wrapper |
+
+If unsure, customers on a BenchAGI rollout want `benchagi-openclaw`; everyone else wants
+`openclaw`.
+
+The old `bench` formula has been renamed to `benchagi` (`formula_renames.json`); existing
+`bench` installs migrate automatically on `brew update && brew upgrade`.
+
 ## Name collision note
 
 Always use the fully qualified name (`benchagi/tap/openclaw`) to install or upgrade. An unrelated `openclaw` cask exists in homebrew-cask (an old game remake) that collides on the short name.
