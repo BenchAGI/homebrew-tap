@@ -10,9 +10,9 @@
 #
 # This is the canonical formula. The old `Formula/bench.rb` alias has been
 # renamed to this formula via formula_renames.json, so existing `bench`
-# installs migrate here on `brew upgrade`. `conflicts_with "bench"` guards
-# the remaining collision window (both packages link `bin/bench` and
-# `bin/benchagi`).
+# installs migrate here on `brew upgrade`. Do not add `conflicts_with "bench"`:
+# Homebrew resolves that old name to this canonical formula during rename
+# handling.
 #
 # Alternative install paths:
 #   curl -fsSL https://raw.githubusercontent.com/BenchAGI/bench-cli/main/scripts/install.sh | sh
@@ -25,8 +25,6 @@ class Benchagi < Formula
   license "MIT"
 
   depends_on "node"
-
-  conflicts_with "bench", because: "both install bin/bench and bin/benchagi"
 
   def install
     system "#{Formula["node"].opt_bin}/npm", "install", "--no-save"
