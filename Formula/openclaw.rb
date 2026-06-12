@@ -22,6 +22,8 @@ class Openclaw < Formula
   depends_on "pnpm" => :build
   depends_on "node"
 
+  conflicts_with "benchagi-openclaw", because: "both install a bin/openclaw executable"
+
   def install
     system "pnpm", "install", "--frozen-lockfile"
     system "pnpm", "build:docker"

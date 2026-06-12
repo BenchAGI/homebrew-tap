@@ -31,6 +31,8 @@ class BenchagiOpenclaw < Formula
   # and logged in. Not declared as a brew dep because Anthropic distributes
   # claude via npm + a separate installer.
 
+  conflicts_with "openclaw", because: "both install a bin/openclaw executable"
+
   def install
     # Build OpenClaw locally during install.
     system "pnpm", "install", "--frozen-lockfile"
