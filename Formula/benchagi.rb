@@ -20,8 +20,8 @@
 class Benchagi < Formula
   desc "Streaming-aware terminal access to the OpenClaw agent system"
   homepage "https://github.com/BenchAGI/bench-cli"
-  url "https://github.com/BenchAGI/bench-cli/archive/refs/tags/v1.0.0-beta.11.tar.gz"
-  sha256 "bbd80cb21e73aa2993276d25fb988a4170e71675c5b84cf3acfe2757e576faa5"
+  url "https://github.com/BenchAGI/bench-cli/archive/refs/tags/v1.0.0-beta.12.tar.gz"
+  sha256 "3e76609a7e346a72595c6f7df621fe8077e6773dabb1b39cf3be69b7fb8cb7a5"
   license "MIT"
 
   depends_on "node"
@@ -62,7 +62,7 @@ class Benchagi < Formula
   end
 
   test do
-    assert_match "1.0.0-beta.11", shell_output("#{bin}/bench version")
-    assert_match "benchagi 1.0.0-beta.11", shell_output("#{bin}/benchagi version")
+    assert_match "1.0.0-beta.12", shell_output("#{bin}/bench version")
+    assert_match "benchagi 1.0.0-beta.12", shell_output("#{bin}/benchagi version")
   end
 end
