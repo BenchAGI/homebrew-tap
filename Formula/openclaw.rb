@@ -15,9 +15,9 @@
 class Openclaw < Formula
   desc "Multi-channel AI gateway with extensible messaging integrations"
   homepage "https://github.com/BenchAGI/openclaw"
-  url "https://github.com/BenchAGI/openclaw/archive/refs/tags/v2026.6.8-bench.4.tar.gz"
-  version "2026.6.8-bench.4"
-  sha256 "461f83173e54e8ecbbe636a34f59023b8c52b7a971d990d5e6f3eaffdd3b5e34"
+  url "https://github.com/BenchAGI/openclaw/archive/refs/tags/v2026.6.8-bench.5.tar.gz"
+  version "2026.6.8-bench.5"
+  sha256 "d9bbe25f04bb30c2c90cc865907202726814c3d5acc3dca9eaaeeaefd86a9e61"
   license "MIT"
 
   depends_on "pnpm" => :build
