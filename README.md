@@ -4,6 +4,15 @@ Canonical Homebrew tap for BenchAGI tools.
 
 ## Install
 
+> **Recent Homebrew builds refuse formulae from untrusted third-party taps**
+> ("Refusing to load formula from untrusted tap"). If you hit that, trust the
+> tap once before installing (the command doesn't exist on older brews — skip
+> it there):
+>
+> ```bash
+> brew trust benchagi/tap
+> ```
+
 BenchAGI CLI and clickable Dock launcher:
 
 ```bash
