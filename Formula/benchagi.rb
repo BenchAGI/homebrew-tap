@@ -27,20 +27,20 @@ class Benchagi < Formula
   depends_on "node"
 
   def install
-    system "#{Formula["node"].opt_bin}/npm", "install", "--no-save"
-    system "#{Formula["node"].opt_bin}/npm", "run", "build"
+    system "#{formula_opt_bin("node")}/npm", "install", "--no-save"
+    system "#{formula_opt_bin("node")}/npm", "run", "build"
 
     libexec.install Dir["*"]
 
     (bin/"bench").write <<~SH
       #!/bin/sh
-      exec "#{Formula["node"].opt_bin}/node" "#{libexec}/bin/bench.mjs" "$@"
+      exec "#{formula_opt_bin("node")}/node" "#{libexec}/bin/bench.mjs" "$@"
     SH
     chmod 0755, bin/"bench"
 
     (bin/"benchagi").write <<~SH
       #!/bin/sh
-      exec "#{Formula["node"].opt_bin}/node" "#{libexec}/bin/benchagi.mjs" "$@"
+      exec "#{formula_opt_bin("node")}/node" "#{libexec}/bin/benchagi.mjs" "$@"
     SH
     chmod 0755, bin/"benchagi"
 
