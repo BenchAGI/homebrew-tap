@@ -110,6 +110,8 @@ brew install benchagi/tap/openclaw
 
 ## Source
 
-Formula source of truth lives in the BenchAGI monorepo at [`tools/homebrew/openclaw.rb`](https://github.com/BenchAGI/BenchAGI_Mono_Repo/blob/main/tools/homebrew/openclaw.rb). This tap's `Formula/openclaw.rb` mirrors it on each release, with the SHA256 pinned to the release tarball.
+The formula actually consumed by Homebrew is [`Formula/openclaw.rb`](Formula/openclaw.rb) in this tap. Each release pins the BenchAGI fork tag and tarball SHA256 here. Release automation may stage a candidate elsewhere, but a customer formula is not canonical until this tap contains the reviewed tag, explicit formula version, checksum, and build-identity assertion.
+
+The Bench fork deliberately keeps `package.json` on its upstream base version. Because GitHub source archives do not include `.git`, each formula bump must pin `source_commit`, inject both `GIT_RELEASE=v<formula-version>` and `GIT_COMMIT=<source-commit>` during the build, and test the resulting `dist/build-info.json`. Runtime receipts must treat formula release, source commit, and package-reported version as separate facts.
 
 The OpenClaw source is at [BenchAGI/openclaw](https://github.com/BenchAGI/openclaw).

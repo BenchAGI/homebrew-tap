@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Homebrew formula for OpenClaw — Bench's multi-channel AI gateway.
 #
 # Install (end-user):
@@ -18,6 +20,7 @@ class Openclaw < Formula
   url "https://github.com/BenchAGI/openclaw/archive/refs/tags/v2026.6.8-bench.5.tar.gz"
   version "2026.6.8-bench.5"
   sha256 "d9bbe25f04bb30c2c90cc865907202726814c3d5acc3dca9eaaeeaefd86a9e61"
+  SOURCE_COMMIT = "28bda9f58ca97d0f7d7d3fead43bbd0b3bc81857"
   license "MIT"
 
   depends_on "pnpm" => :build
@@ -26,6 +29,11 @@ class Openclaw < Formula
   conflicts_with "benchagi-openclaw", because: "both install a bin/openclaw executable"
 
   def install
+    # GitHub source archives do not contain .git, while the Bench fork keeps
+    # package.json on the upstream base version. Inject the signed-off release
+    # tag so dist/build-info.json preserves the formula artifact's true lineage.
+    ENV["GIT_RELEASE"] = "v#{version}"
+    ENV["GIT_COMMIT"] = SOURCE_COMMIT
     system "pnpm", "install", "--frozen-lockfile"
     system "pnpm", "build:docker"
     system "npm", "pack", "--ignore-scripts"
@@ -55,5 +63,8 @@ class Openclaw < Formula
 
   test do
     assert_match "OpenClaw", shell_output("#{bin}/openclaw --version")
+    build_info = JSON.parse((libexec/"lib/node_modules/openclaw/dist/build-info.json").read)
+    assert_equal "v#{version}", build_info.fetch("release")
+    assert_equal SOURCE_COMMIT, build_info.fetch("commit")
   end
 end
