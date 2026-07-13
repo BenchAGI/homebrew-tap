@@ -22,6 +22,7 @@ class Openclaw < Formula
   sha256 "d9bbe25f04bb30c2c90cc865907202726814c3d5acc3dca9eaaeeaefd86a9e61"
   SOURCE_COMMIT = "28bda9f58ca97d0f7d7d3fead43bbd0b3bc81857"
   license "MIT"
+  revision 1
 
   depends_on "pnpm" => :build
   depends_on "node"
