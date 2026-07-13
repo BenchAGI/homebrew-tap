@@ -85,11 +85,12 @@ OpenClaw builds that both install a `bin/openclaw` executable, so they are marke
 
 | Formula | What it is |
 |---------|------------|
-| `openclaw` | Plain OpenClaw gateway — the multi-channel AI gateway, nothing else |
-| `benchagi-openclaw` | Customer harness build — gateway plus the BenchAGI Slack/CLI/cloud-brain bridge and the `aurelius` seat wrapper |
+| `openclaw` | Current Bench OpenClaw gateway — includes the cloud-brain bridge and `local-seat.capture`, follows the current Bench release tags, and does not add an `aurelius` wrapper |
+| `benchagi-openclaw` | Legacy customer-harness formula pinned to `v2026.6.1-6` — includes the older bridge build, Node 24 packaging, and the `aurelius` convenience wrapper |
 
-If unsure, customers on a BenchAGI rollout want `benchagi-openclaw`; everyone else wants
-`openclaw`.
+New and current BenchAGI rollouts should use `openclaw`. Keep `benchagi-openclaw` only
+where an existing install recipe explicitly depends on its legacy Node 24 packaging or
+the `aurelius` wrapper.
 
 The old `bench` formula has been renamed to `benchagi` (`formula_renames.json`); existing
 `bench` installs migrate automatically on `brew update && brew upgrade`.
