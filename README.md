@@ -85,11 +85,12 @@ OpenClaw builds that both install a `bin/openclaw` executable, so they are marke
 
 | Formula | What it is |
 |---------|------------|
-| `openclaw` | Plain OpenClaw gateway — the multi-channel AI gateway, nothing else |
-| `benchagi-openclaw` | Customer harness build — gateway plus the BenchAGI Slack/CLI/cloud-brain bridge and the `aurelius` seat wrapper |
+| `openclaw` | Current Bench OpenClaw gateway — includes the cloud-brain bridge and `local-seat.capture`, follows the current Bench release tags, and does not add an `aurelius` wrapper |
+| `benchagi-openclaw` | Legacy customer-harness formula pinned to `v2026.6.1-6` — includes the older bridge build, Node 24 packaging, and the `aurelius` convenience wrapper |
 
-If unsure, customers on a BenchAGI rollout want `benchagi-openclaw`; everyone else wants
-`openclaw`.
+New and current BenchAGI rollouts should use `openclaw`. Keep `benchagi-openclaw` only
+where an existing install recipe explicitly depends on its legacy Node 24 packaging or
+the `aurelius` wrapper.
 
 The old `bench` formula has been renamed to `benchagi` (`formula_renames.json`); existing
 `bench` installs migrate automatically on `brew update && brew upgrade`.
@@ -110,6 +111,8 @@ brew install benchagi/tap/openclaw
 
 ## Source
 
-Formula source of truth lives in the BenchAGI monorepo at [`tools/homebrew/openclaw.rb`](https://github.com/BenchAGI/BenchAGI_Mono_Repo/blob/main/tools/homebrew/openclaw.rb). This tap's `Formula/openclaw.rb` mirrors it on each release, with the SHA256 pinned to the release tarball.
+The formula actually consumed by Homebrew is [`Formula/openclaw.rb`](Formula/openclaw.rb) in this tap. Each release pins the BenchAGI fork tag and tarball SHA256 here. Release automation may stage a candidate elsewhere, but a customer formula is not canonical until this tap contains the reviewed tag, explicit formula version, checksum, and build-identity assertion.
+
+The Bench fork deliberately keeps `package.json` on its upstream base version. Because GitHub source archives do not include `.git`, each formula bump must pin `source_commit`, inject both `GIT_RELEASE=v<formula-version>` and `GIT_COMMIT=<source-commit>` during the build, and test the resulting `dist/build-info.json`. Runtime receipts must treat formula release, source commit, and package-reported version as separate facts. If build logic changes without a new source version, increment the formula `revision` so existing installs are offered the rebuilt artifact; remove the revision on the next version bump.
 
 The OpenClaw source is at [BenchAGI/openclaw](https://github.com/BenchAGI/openclaw).
